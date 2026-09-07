@@ -14,9 +14,9 @@ import { ALL_INSTRUMENTS } from './instruments.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const SEED = 42
-const CUSTOMER_COUNT = 500
-const MARKET_DATA_DAYS = 180
-const TRANSACTION_MONTHS = 3
+const CUSTOMER_COUNT = 100
+const MARKET_DATA_DAYS = 90
+const TRANSACTION_MONTHS = 2
 
 // --- Seeded PRNG (mulberry32) --------------------------------------------
 function mulberry32(seed) {
