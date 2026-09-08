@@ -3,6 +3,7 @@
 import express from 'express'
 import cors from 'cors'
 import { customersRouter } from './routes/customers.js'
+import { getAllHoldings, getAllInstruments } from './data.js'
 
 export function createApp() {
   const app = express()
@@ -14,6 +15,17 @@ export function createApp() {
   })
 
   app.use('/customers', customersRouter)
+
+  // Top-level discovery endpoints for workshop participants.
+  app.get('/instruments', (_req, res) => {
+    const instruments = getAllInstruments()
+    res.json({ count: instruments.length, instruments })
+  })
+
+  app.get('/holdings', (_req, res) => {
+    const holdings = getAllHoldings()
+    res.json({ count: holdings.length, holdings })
+  })
 
   app.use((_req, res) => {
     res.status(404).json({ error: 'Not found' })
