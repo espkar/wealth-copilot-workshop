@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { customers, getAccountsFor, getCustomer, getInvestmentsFor, getTransactionsFor } from '../data.js'
+import { customers, getAccountsFor, getAllHoldings, getAllInstruments, getCustomer, getInvestmentsFor, getTransactionsFor } from '../data.js'
 import { calculatePortfolio, calculatePerformance } from '../services/portfolio.js'
 import { calculateRisk } from '../services/risk.js'
 import { generateInsights } from '../services/insights.js'
@@ -10,6 +10,18 @@ export const customersRouter = Router()
 function requireCustomer(customerId: string) {
   return getCustomer(customerId)
 }
+
+// GET /instruments - all unique instruments in the fictional universe.
+customersRouter.get('/instruments', (_req, res) => {
+  const instruments = getAllInstruments()
+  res.json({ count: instruments.length, instruments })
+})
+
+// GET /holdings - all holdings across all customers (flattened).
+customersRouter.get('/holdings', (_req, res) => {
+  const holdings = getAllHoldings()
+  res.json({ count: holdings.length, holdings })
+})
 
 // GET /customers - list all fictional customers (summary fields only).
 customersRouter.get('/', (_req, res) => {

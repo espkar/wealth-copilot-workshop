@@ -8,7 +8,7 @@
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { Account, Customer, Investment, MarketDataPoint, Transaction } from './types.js'
+import type { Account, Customer, Instrument, Investment, MarketDataPoint, Transaction } from './types.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // Both `src` (via tsx) and `dist` (built) sit directly under /api, so the
@@ -70,4 +70,28 @@ export function getInvestmentsFor(customerId: string): Investment[] {
 }
 export function getMarketDataFor(ticker: string): MarketDataPoint[] {
   return marketDataByTicker.get(ticker) ?? []
+}
+
+// All unique instruments across the entire synthetic universe, with latest price.
+export function getAllInstruments(): Instrument[] {
+  const seen = new Map<string, Investment>()
+  for (const inv of investments) {
+    if (!seen.has(inv.ticker)) {
+      seen.set(inv.ticker, inv)
+    }
+  }
+  return [...seen.values()].map((inv) => ({
+    ticker: inv.ticker,
+    name: inv.name,
+    asset_type: inv.asset_type,
+    sector: inv.sector,
+    geography: inv.geography,
+    current_price: inv.current_price,
+    currency: inv.currency,
+  }))
+}
+
+// All holdings across all customers (flattened).
+export function getAllHoldings(): Investment[] {
+  return investments
 }

@@ -55,3 +55,13 @@ export interface MarketDataPoint {
   sector: string
   geography: string
 }
+
+export interface Instrument {
+  ticker: string
+  name: string
+  asset_type: string
+  sector: string
+  geography: string
+  current_price: number
+  currency: string
+}
