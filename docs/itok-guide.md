@@ -57,7 +57,7 @@ Dette er nok til å svare godt på spørsmål 6 i `docs/workshop.md`.
 
 ## Hva teller som en god leveranse?
 
-Ikke mengden kode. Se `docs/workshop.md` under "Final deliverables" og "Definition of done" —
+Ikke mengden kode. Se `docs/workshop.md` under "Leveranser" og "Definisjon av ferdig" —
 kort oppsummert:
 
 1. Dere kan vise/forklare **ett** kundeproblem dere har jobbet med

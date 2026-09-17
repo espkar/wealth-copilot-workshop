@@ -1,53 +1,66 @@
-# Workshop challenge: Build the Wealth Copilot
+# Workshop-oppgave: Bygg Wealth Copilot
 
-## Challenge
+## Utfordringen
 
-Design and prototype a Wealth Copilot that provides customers with a consolidated and intelligent view of their financial situation.
+Design og lag en prototype av en Wealth Copilot som gir kunder en samlet og intelligent
+oversikt over sin økonomiske situasjon.
 
-Start with the working demo in this repository. Participants can inspect the API, extend the frontend, change the synthetic data and use the prompts in `/prompts` with GitHub Copilot CLI.
+Ta utgangspunkt i den fungerende demoen i dette repoet. Deltakere kan utforske API-et, utvide
+frontend, endre de syntetiske dataene og bruke promptene i `/prompts` sammen med GitHub
+Copilot CLI.
 
-## Questions to answer
+## 8 spørsmål å svare på
 
-1. What data should be collected?
-2. How should the data platform be designed?
-3. Which technologies should be used?
-4. How should data quality be ensured?
-5. How should security and privacy be handled?
-6. How can AI create value?
-7. How should real-time data be handled?
-8. What are the major risks?
+1. Hvilke data bør samles inn?
+2. Hvordan bør dataplattformen designes?
+3. Hvilke teknologier bør brukes?
+4. Hvordan bør datakvalitet sikres?
+5. Hvordan bør sikkerhet og personvern håndteres?
+6. Hvordan kan AI skape verdi?
+7. Hvordan bør sanntidsdata håndteres?
+8. Hva er de største risikoene?
 
-## Suggested working stages
+Se `docs/itok-guide.md` for en enklere, ikke-teknisk gjennomgang av disse 8 spørsmålene,
+med både en IT-vinkel og en økonomi-vinkel for hvert av dem.
 
-### 1. Understand the baseline
+## Foreslåtte arbeidssteg
 
-Run the application, switch between fictional customers and inspect the API responses behind Dashboard, Portfolio, Insights and Wealth Copilot.
+### 1. Forstå utgangspunktet
 
-### 2. Pick a customer problem
+Kjør applikasjonen, bytt mellom de fiktive kundene og se på API-svarene bak Dashboard,
+Portefølje, Innsikter og Wealth Copilot.
 
-Examples include cash-flow coaching, portfolio diversification explanation, pension planning, external-asset consolidation or transparent data provenance.
+### 2. Velg et kundeproblem
 
-### 3. Design the data flow
+Eksempler: kontantstrøm-coaching, forklaring av porteføljediversifisering, pensjonsplanlegging,
+konsolidering av eksterne aktiva eller gjennomsiktig datasporing (provenance).
 
-Identify the source data, freshness requirement, quality rules, identity/consent needs and the API or event that supports the experience.
+### 3. Design dataflyten
 
-### 4. Prototype
+Identifiser kildedata, krav til ferskhet, kvalitetsregler, behov for identitet/samtykke og
+hvilket API eller event som støtter opplevelsen.
 
-Use the existing API and UI patterns. Keep calculations deterministic and explainable. If adding an AI layer, define what the model may and may not do.
+### 4. Lag en prototype
 
-### 5. Evaluate
+Bruk de eksisterende API- og UI-mønstrene. Hold beregningene deterministiske og forklarbare.
+Hvis dere legger til et AI-lag, definer nøyaktig hva modellen har lov til og ikke lov til.
 
-Test normal and edge cases, inspect data lineage, challenge assumptions and explain failure handling.
+### 5. Evaluer
 
-## Final deliverables
+Test normale tilfeller og kanttilfeller, se på datasporing (lineage), utfordre antakelser og
+forklar hvordan feil håndteres.
 
-- working prototype
-- architecture diagram
-- technology choices
-- business value
-- risks and challenges
-- short explanation of data quality, privacy and AI governance
+## Leveranser
 
-## Definition of done
+- fungerende prototype
+- arkitekturdiagram
+- teknologivalg
+- forretningsverdi
+- risikoer og utfordringer
+- kort forklaring av datakvalitet, personvern og AI-governance
 
-The prototype should work for at least one fictional customer, show where its data came from, handle missing or stale data visibly, and avoid presenting the educational risk score as financial advice.
+## Definisjon av ferdig
+
+Prototypen skal fungere for minst én fiktiv kunde, vise hvor dataene kommer fra, synlig
+håndtere manglende eller utdaterte data, og aldri fremstille den pedagogiske risikoscoren som
+reell finansiell rådgivning.
