@@ -50,6 +50,25 @@ Hvis dere legger til et AI-lag, definer nøyaktig hva modellen har lov til og ik
 Test normale tilfeller og kanttilfeller, se på datasporing (lineage), utfordre antakelser og
 forklar hvordan feil håndteres.
 
+### 6. Designoppgave (valgfri): gi appen en Nordea-inspirert stil
+
+Gjør frontend mer visuelt lik en typisk nettbank, inspirert av Nordea sin fargeprofil
+(mørk/kraftig blåfarge, ren og nordisk stil, tydelig topplinje/header).
+
+Ting å vurdere:
+
+- Bytt fargepalett i frontend (bakgrunn, knapper, lenker, grafer) til blåtoner
+- Legg til en enkel, tekstbasert logo/"wordmark" (f.eks. "Wealth Copilot") i header i stedet
+  for å bruke selve Nordea-logoen — **ikke** last ned eller bruk Nordeas faktiske
+  logofil/varemerke, siden dette er en åpen, fiktiv demo og ikke et ekte Nordea-produkt
+- Vurder skrifttype, avrundede hjørner/kort-design og luftig layout, slik man ofte ser i
+  nettbank-apper
+- Sørg for at det fortsatt er tydelig, f.eks. i footer, at dette er en **fiktiv, syntetisk
+  demo** og ikke et ekte Nordea-produkt
+
+Dette er en god oppgave for dem i gruppa som vil jobbe mer med frontend/UI enn med data og
+arkitektur.
+
 ## Leveranser
 
 - fungerende prototype
