@@ -2,8 +2,10 @@
 // app without binding a real network port.
 import express from 'express'
 import cors from 'cors'
+import swaggerUi from 'swagger-ui-express'
 import { customersRouter } from './routes/customers.js'
 import { getAllHoldings, getAllInstruments } from './data.js'
+import { loadOpenApiSpec } from './docs.js'
 
 export function createApp() {
   const app = express()
@@ -13,6 +15,13 @@ export function createApp() {
   app.get('/health', (_req, res) => {
     res.json({ status: 'ok', service: 'wealth-copilot-api', timestamp: new Date().toISOString() })
   })
+
+  // API documentation: interactive Swagger UI + the raw OpenAPI document.
+  const openApiSpec = loadOpenApiSpec()
+  app.get('/openapi.json', (_req, res) => {
+    res.json(openApiSpec)
+  })
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpec))
 
   app.use('/customers', customersRouter)
 

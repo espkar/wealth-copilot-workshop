@@ -77,6 +77,8 @@ The API exposes:
 
 ```text
 GET  /health
+GET  /instruments
+GET  /holdings
 GET  /customers
 GET  /customers/:customerId
 GET  /customers/:customerId/accounts
@@ -90,6 +92,17 @@ POST /customers/:customerId/copilot
 ```
 
 The Copilot endpoint accepts `{ "message": "How has my portfolio performed?" }`. It uses deterministic intent matching and calculations today. The service interface is deliberately isolated so a future workshop exercise can add an LLM or retrieval layer without changing the frontend contract.
+
+### API documentation (Swagger UI)
+
+Interactive API documentation is available once the API is running:
+
+```text
+http://localhost:3000/docs         Swagger UI
+http://localhost:3000/openapi.json Raw OpenAPI 3.0 document
+```
+
+The spec lives in `api/src/openapi.yaml` and is served by `swagger-ui-express`. It documents every endpoint, request/response schema and the fact that the risk score is an educational demo model, not real investment advice. Keep it in sync when you add or change endpoints - `prompts/02-add-api-endpoint.md` includes a reminder to update it.
 
 ## Deploying the frontend
 

@@ -13,6 +13,9 @@ deterministic and explainable. Add focused Supertest coverage for:
 - an invalid customer
 - the important calculation or aggregation
 
+Also add the new path and response schema to api/src/openapi.yaml so it shows
+up correctly in Swagger UI at /docs.
+
 Do not add a database or external API. Run the API tests and type-check when
 finished.
 ```
