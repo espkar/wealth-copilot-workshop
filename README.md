@@ -64,6 +64,7 @@ docs/
   architecture.md      future production data and AI architecture
   workshop.md           participant challenge and deliverables
   twist-cards.md        four workshop scenario changes
+  itok-guide.md         non-technical guide to what the workshop expects (Norwegian)
 prompts/
   *.md                  example GitHub Copilot CLI prompts
 .github/workflows/
@@ -132,3 +133,6 @@ After deploying the API, set the frontend's `VITE_API_URL` to its public HTTPS U
 - Authentication, authorization, consent management and production-grade observability are documented design topics, not implemented here.
 
 See `docs/architecture.md` and `docs/workshop.md` for the recommended next steps.
+
+Not sure what the workshop actually expects from you, especially if you're not doing the
+coding yourself? See `docs/itok-guide.md` for a non-technical (Norwegian) walkthrough.
