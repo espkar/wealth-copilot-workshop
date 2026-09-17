@@ -58,13 +58,11 @@ Gjør frontend mer visuelt lik en typisk nettbank, inspirert av Nordea sin farge
 Ting å vurdere:
 
 - Bytt fargepalett i frontend (bakgrunn, knapper, lenker, grafer) til blåtoner
-- Legg til en enkel, tekstbasert logo/"wordmark" (f.eks. "Wealth Copilot") i header i stedet
-  for å bruke selve Nordea-logoen — **ikke** last ned eller bruk Nordeas faktiske
-  logofil/varemerke, siden dette er en åpen, fiktiv demo og ikke et ekte Nordea-produkt
+- Legg til en enkel logo/"wordmark" (f.eks. "Wealth Copilot") i header
 - Vurder skrifttype, avrundede hjørner/kort-design og luftig layout, slik man ofte ser i
   nettbank-apper
 - Sørg for at det fortsatt er tydelig, f.eks. i footer, at dette er en **fiktiv, syntetisk
-  demo** og ikke et ekte Nordea-produkt
+  demo**
 
 Dette er en god oppgave for dem i gruppa som vil jobbe mer med frontend/UI enn med data og
 arkitektur.
