@@ -1,7 +1,6 @@
 # ITØK-guide: Hva går workshopen egentlig ut på?
 
-Denne guiden er for deg som er usikker på hva oppgaven forventer — spesielt hvis du kommer fra
-IT-økonomi (ITØK) og ikke nødvendigvis skal skrive mye kode selv.
+Denne guiden er for deg som er usikker på hva oppgaven forventer.
 
 ## Kort sagt
 
@@ -32,15 +31,15 @@ Alle nivåer er gyldige. Det viktigste er at dere kan **forklare og begrunne** v
 Se de 8 spørsmålene i `docs/workshop.md`. De er kjernen i oppgaven. For hvert spørsmål,
 tenk over **både** IT-siden og økonomi-siden:
 
-| Spørsmål | IT-vinkel | Økonomi-vinkel |
-|---|---|---|
-| Hvilke data trengs? | Datakilder, format, oppdateringsfrekvens | Hvilke tall er relevante for kundens økonomi? |
-| Hvordan bør plattformen designes? | Arkitektur, skalering | Hvem eier/bruker dataene? |
-| Hvordan sikre datakvalitet? | Validering, feilhåndtering | Konsekvens av feil tall for kunden |
-| Sikkerhet og personvern? | Tilgangsstyring, kryptering | GDPR, samtykke, bankhemmelighet |
-| Hvordan kan AI skape verdi? | Hvor i systemet passer AI inn? | Hva bør/bør ikke AI si om kundens penger? |
-| Sanntidsdata? | Events, oppdateringsjobber | Hvor "fersk" må et tall være for å være nyttig? |
-| Største risikoer? | Systemfeil, nedetid | Feilinformasjon, tap av tillit |
+| Spørsmål                          | IT-vinkel                                | Økonomi-vinkel                                  |
+| --------------------------------- | ---------------------------------------- | ----------------------------------------------- |
+| Hvilke data trengs?               | Datakilder, format, oppdateringsfrekvens | Hvilke tall er relevante for kundens økonomi?   |
+| Hvordan bør plattformen designes? | Arkitektur, skalering                    | Hvem eier/bruker dataene?                       |
+| Hvordan sikre datakvalitet?       | Validering, feilhåndtering               | Konsekvens av feil tall for kunden              |
+| Sikkerhet og personvern?          | Tilgangsstyring, kryptering              | GDPR, samtykke, bankhemmelighet                 |
+| Hvordan kan AI skape verdi?       | Hvor i systemet passer AI inn?           | Hva bør/bør ikke AI si om kundens penger?       |
+| Sanntidsdata?                     | Events, oppdateringsjobber               | Hvor "fersk" må et tall være for å være nyttig? |
+| Største risikoer?                 | Systemfeil, nedetid                      | Feilinformasjon, tap av tillit                  |
 
 ## Om AI/LLM-spørsmålet spesielt
 
