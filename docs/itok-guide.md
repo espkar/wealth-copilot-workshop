@@ -12,7 +12,7 @@ forening.
 Dere kan velge selv hvor teknisk dere vil gå:
 
 - **Lite teknisk**: diskutere, tegne arkitektur, skrive ned beslutninger og begrunnelser
-- **Middels teknisk**: endre tekster, tall, regler eller synthetic data
+- **Middels teknisk**: endre tekster, tall, regler eller syntetiske data
 - **Mer teknisk**: endre kode i frontend/API hvis noen i gruppa vil og kan
 
 Alle nivåer er gyldige. Det viktigste er at dere kan **forklare og begrunne** valgene deres.
@@ -23,8 +23,26 @@ Alle nivåer er gyldige. Det viktigste er at dere kan **forklare og begrunne** v
 - **Portefølje-oversikt**: hva kunden eier, fordelt på aktivaklasser
 - **Risikoscore**: en enkel, forklarbar modell (IKKE ekte finansiell rådgivning)
 - **Innsikter**: automatisk genererte observasjoner om kundens økonomi
-- **Wealth Copilot**: en enkel "chatbot" som svarer på spørsmål om kundens egen økonomi —
+- **Wealth Copilot**: en enkel «chatbot» som svarer på spørsmål om kundens egen økonomi —
   i dag er den regelbasert (ikke en ekte AI/LLM)
+
+## Slik henger datamodellene sammen
+
+API-et består av både rådata og beregnede modeller:
+
+- En **kunde** kan ha én eller flere **kontoer**.
+- En konto kan ha mange **transaksjoner**, for eksempel innbetalinger, uttak og overføringer.
+- En kunde kan ha mange **investeringer**. En investering er kundens konkrete beholdning
+  i et instrument, med antall, kjøpspris og nåværende pris.
+- Et **instrument** er selve produktet, for eksempel en aksje, ETF, et fond, en obligasjon
+  eller kontanter. Det samme instrumentet kan eies av mange kunder.
+- **Markedsdata** beskriver hvordan prisen på et instrument har utviklet seg over tid.
+- API-et bruker disse dataene til å beregne en **porteføljeoversikt**, en illustrativ
+  **risikoscore** og regelbaserte **innsikter**.
+
+Dette forklarer også hvorfor `/instruments` og `/holdings` ikke har samme antall rader:
+instrumenter er unike produkter, mens holdings/beholdninger er kundespesifikke posisjoner.
+Se «Datamodeller i API-et» i `README.md` for feltene som inngår i hver modell.
 
 ## Hva skal dere egentlig gjøre?
 
@@ -66,7 +84,7 @@ kort oppsummert:
 
 ## Hvor finner jeg mer?
 
-- `README.md` — hvordan kjøre appen
+- `README.md` — hvordan kjøre appen og hvordan datamodellene henger sammen
 - `docs/workshop.md` — selve oppgaveteksten og de 8 spørsmålene
 - `docs/architecture.md` — hvordan systemet er bygget opp
 - `docs/twist-cards.md` — ekstra scenarioer hvis dere blir ferdige tidlig

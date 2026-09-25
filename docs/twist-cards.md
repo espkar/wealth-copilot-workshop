@@ -1,27 +1,40 @@
-# Workshop twist cards
+# Scenarioendringer for workshopen
 
-Introduce one card at a time after teams have a first design. Ask each team to update both the architecture and the user experience.
+Introduser ett kort om gangen etter at gruppene har laget et første design. Be hver gruppe
+oppdatere både arkitekturen og brukeropplevelsen.
 
-## Twist 1: External investments
+## Scenario 1: Eksterne investeringer
 
-**Scenario:** The customer has investments with another financial institution. How should your platform handle this?
+**Scenario:** Kunden har investeringer hos en annen finansinstitusjon. Hvordan bør plattformen
+håndtere dette?
 
-Discuss open-banking consent, data freshness, instrument mapping, ownership verification, aggregation boundaries, missing cost basis, and what the Copilot may say when external data is incomplete.
+Diskuter samtykke gjennom åpen bank, ferskhet på data, kobling av instrumenter,
+bekreftelse av eierskap, grenser for sammenstilling, manglende kostpris og hva Copilot kan
+si når eksterne data er ufullstendige.
 
-## Twist 2: Immediate purchase reflection
+## Scenario 2: Kjøp skal vises umiddelbart
 
-**Scenario:** The customer buys an asset. The customer expects the Wealth Copilot to reflect the change immediately.
+**Scenario:** Kunden kjøper et aktivum og forventer at Wealth Copilot viser endringen med en
+gang.
 
-Discuss event-driven updates, order/trade lifecycle, pending versus settled positions, price freshness, cache invalidation, idempotency and how the UI communicates provisional values.
+Diskuter hendelsesdrevne oppdateringer, livssyklusen til ordre og handler, ventende versus
+oppgjorte posisjoner, prisens ferskhet, ugyldiggjøring av cache, idempotens og hvordan
+brukergrensesnittet kommuniserer foreløpige verdier.
 
-## Twist 3: Personal data transparency
+## Scenario 3: Åpenhet om personopplysninger
 
-**Scenario:** The customer asks the bank to show exactly which personal data was used to generate an AI insight.
+**Scenario:** Kunden ber banken vise nøyaktig hvilke personopplysninger som ble brukt til å
+lage en AI-innsikt.
 
-Discuss provenance, explainability, purpose limitation, data catalogs, response citations, audit records, retention and a customer-facing “why am I seeing this?” experience.
+Diskuter dataopprinnelse, forklarbarhet, formålsbegrensning, datakataloger, kildehenvisninger
+i svaret, revisjonsspor, lagringstid og en kundeopplevelse som svarer på «Hvorfor ser jeg
+dette?».
 
-## Twist 4: Incorrect AI insight
+## Scenario 4: Feil AI-innsikt
 
-**Scenario:** The AI gives the customer an incorrect investment-related insight. How does the bank detect, explain and remediate this?
+**Scenario:** AI-en gir kunden en feilaktig investeringsrelatert innsikt. Hvordan oppdager,
+forklarer og retter banken dette?
 
-Discuss groundedness checks, deterministic calculators, model evaluation, incident response, customer correction, advisor escalation, rollback, auditability and regulatory reporting.
+Diskuter kontroller av forankring i datagrunnlaget, deterministiske kalkulatorer,
+modellevaluering, hendelseshåndtering, korrigering for kunden, eskalering til rådgiver,
+tilbakerulling, revisjonsspor og regulatorisk rapportering.

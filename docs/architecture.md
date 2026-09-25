@@ -1,76 +1,110 @@
-# Wealth Copilot reference architecture
+# Referansearkitektur for Wealth Copilot
 
-The workshop prototype uses static JSON files and a small REST API so participants can focus on product and platform decisions without spending the first hour configuring infrastructure. A production wealth platform would separate ingestion, governed data products, analytics and AI serving more explicitly.
+Workshopprototypen bruker statiske JSON-filer og et lite REST API slik at deltakerne kan
+fokusere på produkt- og plattformvalg uten å bruke den første timen på infrastruktur.
+En produksjonsplattform for formuesforvaltning ville skilt tydeligere mellom datainnhenting,
+styrte dataprodukter, analyse og AI-tjenester.
 
-## Logical flow
+## Logisk dataflyt
 
 ```text
-Core banking, cards, broker, pension, open banking, market data
+Kjernebank, kort, megler, pensjon, åpen bank, markedsdata
         ↓
-Batch ingestion + streaming/event adapters
+Batch-inntak + strømme-/event-adaptere
         ↓
-Landing zone in a data lake / lakehouse
+Landingssone i en dataplattform/lakehouse
         ↓
-Standardized transformations and domain data products
+Standardiserte transformasjoner og domenedataprodukter
         ↓
-Data quality rules, reconciliation and exception workflow
+Datakvalitetsregler, avstemming og håndtering av avvik
         ↓
-Data governance, catalog, lineage, consent and master data
+Datastyring, katalog, dataopprinnelse, samtykke og masterdata
         ↓
-Warehouse/lakehouse analytics, ML features and portfolio services
+Analyse i warehouse/lakehouse, ML-features og porteføljetjenester
         ↓
-AI platform: retrieval, tools, model gateway, guardrails and evaluation
+AI-plattform: gjenfinning, verktøy, modellgateway, sikkerhetsregler og evaluering
         ↓
-Authenticated APIs and event-driven services
+Autentiserte API-er og hendelsesdrevne tjenester
         ↓
-Web/mobile digital channels and advisor tooling
+Digitale web-/mobilkanaler og rådgiververktøy
 ```
 
-## Platform building blocks
+## Plattformens byggesteiner
 
-### Data sources and ingestion
+### Datakilder og datainntak
 
-Use batch ingestion for statements, end-of-day positions and periodic reference data. Use streaming or event-driven ingestion for trades, payments, price ticks, customer preference changes and portfolio updates. Every event should have an idempotency key, event time, source system, schema version and trace identifier.
+Bruk batch-inntak for kontoutskrifter, posisjoner ved dagens slutt og periodiske
+referansedata. Bruk strømme- eller hendelsesdrevet inntak for handler, betalinger,
+prisoppdateringer, endringer i kundeønsker og porteføljeoppdateringer. Hver hendelse bør ha
+en idempotensnøkkel, hendelsestidspunkt, kildesystem, skjemaversjon og sporings-ID.
 
-### Lakehouse and warehouse
+### Lakehouse og warehouse
 
-The lakehouse is a durable, economical landing and history layer for raw and standardized data. A warehouse or semantic layer serves governed reporting and low-latency business queries. Keep raw, standardized and curated zones separate so a transformation can be replayed and audited.
+Lakehouse fungerer som et varig og kostnadseffektivt lag for rådata og historikk. Et
+warehouse eller semantisk lag leverer styrt rapportering og raske forretningsspørringer.
+Hold rå, standardiserte og kuraterte soner adskilt slik at en transformasjon kan kjøres på
+nytt og revideres.
 
-### Master data, catalog and lineage
+### Masterdata, katalog og dataopprinnelse
 
-Customer, account, instrument and organization identifiers need mastered mappings across source systems. A data catalog should describe ownership, sensitivity, retention and quality expectations. Lineage should show how an AI insight or dashboard metric can be traced back to source records and transformation versions.
+Kunde-, konto-, instrument- og organisasjons-ID-er trenger standardiserte koblinger mellom
+kildesystemene. En datakatalog bør beskrive eier, sensitivitet, lagringstid og
+kvalitetsforventninger. Dataopprinnelse bør vise hvordan en AI-innsikt eller et
+dashboard-tall kan spores tilbake til kilderegistre og versjoner av transformasjoner.
 
-### Data quality
+### Datakvalitet
 
-Typical checks include schema validation, required fields, uniqueness, referential integrity, reconciliation to source totals, freshness, outlier detection and duplicate-event detection. Quality failures should create observable exceptions rather than silently dropping records.
+Typiske kontroller er skjemavalidering, obligatoriske felt, unikhet, referanseintegritet,
+avstemming mot totalsummer i kilden, ferskhet, avviksdeteksjon og deteksjon av dupliserte
+hendelser. Kvalitetsfeil bør opprette synlige avvik i stedet for å forkaste data i stillhet.
 
-### Identity and access management
+### Identitets- og tilgangsstyring
 
-Use strong customer authentication, service identities, short-lived tokens, least privilege and purpose-bound access. Separate customer-facing APIs, advisor access and internal data-science access. Authorize every request for the customer, account and data purpose in scope.
+Bruk sterk kundeautentisering, tjenesteidentiteter, kortlevde tokens, minste privilegium og
+tilgang knyttet til et bestemt formål. Skill mellom kunde-API-er, rådgivertilgang og intern
+tilgang for datavitenskap. Autoriser hver forespørsel for kunden, kontoen og formålet som
+ligger innenfor omfanget.
 
-### Security, privacy and GDPR
+### Sikkerhet, personvern og GDPR
 
-Encrypt data in transit and at rest. Tokenize or minimize sensitive fields in analytics and AI contexts. Implement consent and purpose tracking, data-subject access and deletion workflows, retention limits, regional processing controls and a clear explanation of automated decision-making. Do not send unnecessary personal data to a model provider.
+Krypter data under overføring og lagring. Tokeniser eller begrens sensitive felt i analyse-
+og AI-sammenheng. Implementer sporing av samtykke og formål, arbeidsflyter for innsyn og
+sletting, grenser for lagringstid, kontroll med geografisk behandling og en tydelig
+forklaring av automatiserte beslutninger. Ikke send unødvendige personopplysninger til en
+modell-leverandør.
 
-### Audit logging and observability
+### Revisjonslogger og observability
 
-Record who accessed which data, which tool or model was called, the policy decision, the data versions used and the response shown to the customer. Monitor latency, errors, freshness, quality, model drift, prompt injection signals and unusual access patterns. Logs must be tamper-resistant and protected from containing unnecessary sensitive data.
+Registrer hvem som fikk tilgang til hvilke data, hvilket verktøy eller hvilken modell som
+ble kalt, hvilken policybeslutning som ble tatt, hvilke dataversjoner som ble brukt og hvilket
+svar kunden fikk. Overvåk svartid, feil, ferskhet, kvalitet, modellendring,
+prompt-injection-signaler og uvanlige tilgangsmønstre. Logger må beskyttes mot endring og
+mot å inneholde unødvendige sensitive data.
 
-### AI platform and governance
+### AI-plattform og styring
 
-A production Copilot should use a model gateway, approved-model registry, prompt/version management, retrieval controls, tool allowlists, content safety, financial-advice boundaries and human escalation. Responses should cite the data used, distinguish facts from explanations, expose uncertainty and avoid making regulated recommendations without the required controls.
+En Copilot i produksjon bør bruke en modellgateway, register over godkjente modeller,
+styring av prompter og versjoner, kontrollert gjenfinning, tillatte verktøy,
+innholdssikkerhet, grenser for økonomiske råd og eskalering til mennesker. Svar bør
+referere til dataene som ble brukt, skille fakta fra forklaringer, vise usikkerhet og unngå
+regulerte anbefalinger uten nødvendige kontroller.
 
-Model evaluation should include factuality, groundedness, refusal behavior, fairness, privacy leakage, prompt injection resistance and scenario-specific financial safety. Monitor these measures continuously after release.
+Modellevaluering bør omfatte faktakorrekthet, forankring i datagrunnlaget,
+avvisningsatferd, rettferdighet, lekkasje av personopplysninger, motstand mot
+prompt-injection og scenariospesifikk økonomisk sikkerhet. Overvåk disse målene kontinuerlig
+etter lansering.
 
-## Prototype-to-production mapping
+## Fra prototype til produksjon
 
-| Prototype | Production direction |
+| Prototype | Retning for produksjon |
 | --- | --- |
-| `data/*.json` | Governed lakehouse and domain data products |
-| `api/src/data.ts` | Data access layer with policy enforcement |
-| Portfolio service | Portfolio domain service backed by positions and prices |
-| Rule-based insights | Feature store/analytics plus governed insight service |
-| Deterministic Copilot | Model gateway, retrieval, tools and evaluation |
-| Vite frontend | Authenticated web/mobile channel |
+| `data/*.json` | Styrt lakehouse og domenedataprodukter |
+| `api/src/data.ts` | Datalag med policyhåndheving |
+| Porteføljetjeneste | Porteføljedomenetjeneste basert på posisjoner og priser |
+| Regelbaserte innsikter | Feature store/analyse og styrt innsynstjeneste |
+| Deterministisk Copilot | Modellgateway, gjenfinning, verktøy og evaluering |
+| Vite-frontend | Autentisert web-/mobilkanal |
 
-The key design principle is to keep deterministic calculations and policy checks outside the language model. The model may explain governed facts, but it should not become the system of record for balances, prices, permissions or suitability decisions.
+Det viktigste designprinsippet er å holde deterministiske beregninger og policykontroller
+utenfor språkmodellen. Modellen kan forklare styrte fakta, men bør ikke være kilden til
+saldobeløp, priser, tillatelser eller egnethetsbeslutninger.

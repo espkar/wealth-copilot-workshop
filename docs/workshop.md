@@ -6,7 +6,7 @@ Design og lag en prototype av en Wealth Copilot som gir kunder en samlet og inte
 oversikt over sin økonomiske situasjon.
 
 Ta utgangspunkt i den fungerende demoen i dette repoet. Deltakere kan utforske API-et, utvide
-frontend, endre de syntetiske dataene og bruke promptene i `/prompts` sammen med GitHub
+frontend, endre de syntetiske dataene og bruke instruksjonene i `/prompts` sammen med GitHub
 Copilot CLI.
 
 ## 8 spørsmål å svare på
@@ -32,13 +32,14 @@ Portefølje, Innsikter og Wealth Copilot.
 
 ### 2. Velg et kundeproblem
 
-Eksempler: kontantstrøm-coaching, forklaring av porteføljediversifisering, pensjonsplanlegging,
-konsolidering av eksterne aktiva eller gjennomsiktig datasporing (provenance).
+Eksempler: veiledning om kontantstrøm, forklaring av porteføljediversifisering,
+pensjonsplanlegging, konsolidering av eksterne aktiva eller tydelig sporing av hvor dataene
+kommer fra.
 
 ### 3. Design dataflyten
 
 Identifiser kildedata, krav til ferskhet, kvalitetsregler, behov for identitet/samtykke og
-hvilket API eller event som støtter opplevelsen.
+hvilket API eller hvilken hendelse som støtter opplevelsen.
 
 ### 4. Lag en prototype
 
@@ -47,20 +48,20 @@ Hvis dere legger til et AI-lag, definer nøyaktig hva modellen har lov til og ik
 
 ### 5. Evaluer
 
-Test normale tilfeller og kanttilfeller, se på datasporing (lineage), utfordre antakelser og
+Test normale tilfeller og kanttilfeller, se på dataopprinnelse, utfordre antakelser og
 forklar hvordan feil håndteres.
 
 ### 6. Designoppgave (valgfri): gi appen en Nordea-inspirert stil
 
-Gjør frontend mer visuelt lik en typisk nettbank, inspirert av Nordea sin fargeprofil
-(mørk/kraftig blåfarge, ren og nordisk stil, tydelig topplinje/header).
+Gjør frontend mer visuelt lik en typisk nettbank, inspirert av en mørk og kraftig blåfarge,
+ren nordisk stil og en tydelig topplinje/topptekst.
 
 Ting å vurdere:
 
 - Bytt fargepalett i frontend (bakgrunn, knapper, lenker, grafer) til blåtoner
-- Legg til en enkel logo/"wordmark" (f.eks. "Wealth Copilot") i header
+- Legg til en enkel logo eller tekstlogo (for eksempel «Wealth Copilot») i toppteksten
 - Vurder skrifttype, avrundede hjørner/kort-design og luftig layout, slik man ofte ser i
-  nettbank-apper
+  nettbankapplikasjoner
 - Sørg for at det fortsatt er tydelig, f.eks. i footer, at dette er en **fiktiv, syntetisk
   demo**
 
@@ -74,7 +75,7 @@ arkitektur.
 - teknologivalg
 - forretningsverdi
 - risikoer og utfordringer
-- kort forklaring av datakvalitet, personvern og AI-governance
+- kort forklaring av datakvalitet, personvern og AI-styring
 
 ## Definisjon av ferdig
 
